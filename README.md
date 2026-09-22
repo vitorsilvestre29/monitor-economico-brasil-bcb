@@ -83,10 +83,29 @@ docs/       imagens
 
 A camada Silver não é apenas tipagem: cada notebook conta explicitamente linhas com data nula, valor nulo e datas duplicadas, e **só libera a tabela se os três contadores forem zero**. Se algo estiver inconsistente, o pipeline falha de propósito, em vez de seguir com dados ruins.
 
+## Orquestração
+
+O pipeline é executado por um job do **Databricks Workflows** chamado `monitor_economico_bcb`, com 10 tarefas organizadas como um DAG em fan-out/fan-in:
+
+- As três ingestões Bronze (`bronze_selic`, `bronze_ipca`, `bronze_dolar`) são independentes entre si e rodam em paralelo.
+- Cada Bronze alimenta sua respectiva tarefa Silver de tipagem/validação, que por sua vez alimenta a tarefa Gold de agregação mensal correspondente.
+- As três tarefas Gold convergem em uma tarefa final de consolidação, `gold_indicadores_final`.
+
+```mermaid
+flowchart LR
+    B1[bronze_selic] --> S1[silver_selic] --> G1[gold_selic]
+    B2[bronze_ipca] --> S2[silver_ipca] --> G2[gold_ipca]
+    B3[bronze_dolar] --> S3[silver_dolar] --> G3[gold_dolar]
+    G1 --> GF[gold_indicadores_final]
+    G2 --> GF
+    G3 --> GF
+```
+
+O job roda diariamente às 05:00 (cron `41 0 5 * * ?`, fuso `America/Sao_Paulo`), em compute **Serverless** do Databricks Free Edition (sem custo), e envia notificação por e-mail em caso de falha. A definição completa do job, exportada do workspace, está em [`docs/job_definition.json`](docs/job_definition.json).
+
 ## Limitações conhecidas
 
 - O pipeline foi desenvolvido e executado no ambiente Databricks; os notebooks aqui são o código-fonte exportado, não um projeto pronto para rodar localmente sem adaptação (workspace, cluster e permissões de API precisam ser configurados por quem for reexecutar).
-- Não há orquestração automatizada (ex.: Databricks Workflows/Jobs) documentada neste repositório — a execução dos notebooks é sequencial e manual.
 - Não há testes automatizados (pytest) além das checagens de qualidade embutidas nos notebooks Silver.
 
 ## Autor

@@ -1,0 +1,168 @@
+{
+  "name": "monitor_economico_bcb",
+  "email_notifications": {
+    "on_failure": [
+      "vitorcesarsilvestre2017@gmail.com"
+    ],
+    "no_alert_for_skipped_runs": false
+  },
+  "webhook_notifications": {},
+  "notification_settings": {
+    "no_alert_for_skipped_runs": false,
+    "no_alert_for_canceled_runs": false
+  },
+  "timeout_seconds": 0,
+  "schedule": {
+    "quartz_cron_expression": "41 0 5 * * ?",
+    "timezone_id": "America/Sao_Paulo",
+    "pause_status": "UNPAUSED"
+  },
+  "max_concurrent_runs": 1,
+  "tasks": [
+    {
+      "task_key": "bronze_dolar",
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/07_bronze_dolar",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "bronze_ipca",
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/04_bronze_ipca (1)",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "bronze_selic",
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/01_bronze_bcb",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "silver_dolar",
+      "depends_on": [
+        { "task_key": "bronze_dolar" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/08_silver_dolar",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "gold_dolar",
+      "depends_on": [
+        { "task_key": "silver_dolar" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/09_gold_dolar",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "silver_ipca",
+      "depends_on": [
+        { "task_key": "bronze_ipca" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/05_silver_ipca",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "gold_ipca",
+      "depends_on": [
+        { "task_key": "silver_ipca" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/06_gold_ipca",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "silver_selic",
+      "depends_on": [
+        { "task_key": "bronze_selic" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/02_silver_bcb",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "gold_selic",
+      "depends_on": [
+        { "task_key": "silver_selic" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/03_gold_bcb",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    },
+    {
+      "task_key": "gold_indicadores_final",
+      "depends_on": [
+        { "task_key": "gold_selic" },
+        { "task_key": "gold_ipca" },
+        { "task_key": "gold_dolar" }
+      ],
+      "run_if": "ALL_SUCCESS",
+      "notebook_task": {
+        "notebook_path": "/Workspace/Users/vitorcesarsilvestre2017@gmail.com/BCB/10_gold_indicadores",
+        "source": "WORKSPACE"
+      },
+      "timeout_seconds": 0,
+      "email_notifications": {},
+      "webhook_notifications": {},
+      "disabled": false
+    }
+  ],
+  "queue": { "enabled": true },
+  "performance_target": "PERFORMANCE_OPTIMIZED"
+}
