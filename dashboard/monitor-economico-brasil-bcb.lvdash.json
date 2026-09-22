@@ -1,0 +1,513 @@
+{
+  "datasets": [
+    {
+      "name": "ab82d6e2",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, selic_media FROM gold_indicadores_economicos_mensal ORDER BY mes_referencia DESC"
+      ]
+    },
+    {
+      "name": "1cb6290d",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, selic_media FROM gold_indicadores_economicos_mensal ORDER BY mes_referencia DESC"
+      ]
+    },
+    {
+      "name": "58b90721",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, selic_media FROM gold_indicadores_economicos_mensal ORDER BY mes_referencia DESC"
+      ]
+    },
+    {
+      "name": "f8b5ccc6",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, ipca_mensal FROM gold_indicadores_economicos_mensal WHERE ipca_mensal IS NOT NULL ORDER BY mes_referencia DESC LIMIT 1"
+      ]
+    },
+    {
+      "name": "e8210d77",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, dolar_media FROM gold_indicadores_economicos_mensal ORDER BY mes_referencia DESC LIMIT 1"
+      ]
+    },
+    {
+      "name": "f3ac2a59",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, selic_media FROM gold_indicadores_economicos_mensal ORDER BY mes_referencia ASC"
+      ]
+    },
+    {
+      "name": "5bf5e3d9",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, ipca_mensal FROM gold_indicadores_economicos_mensal WHERE ipca_mensal IS NOT NULL ORDER BY mes_referencia ASC"
+      ]
+    },
+    {
+      "name": "59975eec",
+      "displayName": "Untitled dataset",
+      "queryLines": [
+        "USE CATALOG `workspace`;\n",
+        "USE SCHEMA `default`;\n",
+        "\n",
+        "SELECT mes_referencia, dolar_media FROM gold_indicadores_economicos_mensal ORDER BY mes_referencia ASC"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "be92d30c",
+      "displayName": "Visão Geral",
+      "layout": [
+        {
+          "widget": {
+            "name": "6ebb6df9",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "58b90721",
+                  "fields": [
+                    {
+                      "name": "selic_media",
+                      "expression": "`selic_media`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "<span style=\"font-size: 36px;line-height: 1.5;font-weight: 700;\">Taxa Selic atual</span>",
+                  "fields": []
+                },
+                "description": {
+                  "value": "Taxa Selic atual",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "selic_media",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    },
+                    "hideGroupSeparator": true
+                  },
+                  "formatTemplate": "{{ @formatted }}%",
+                  "style": {
+                    "fontWeight": 700,
+                    "fontStyle": "normal",
+                    "fontSize": 76
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "7b058a85",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f8b5ccc6",
+                  "fields": [
+                    {
+                      "name": "ipca_mensal",
+                      "expression": "`ipca_mensal`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": false,
+                "showDescription": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "Visualização 1",
+                  "fields": []
+                },
+                "description": {
+                  "value": "<span style=\"font-family: Arial;font-weight: 700;font-size: 36px;line-height: 1.5;\">IPCA mensal atual</span>",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "ipca_mensal",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "none",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    },
+                    "hideGroupSeparator": true
+                  },
+                  "rowNumber": 1,
+                  "formatTemplate": "{{ @formatted }}%",
+                  "style": {
+                    "fontWeight": 700,
+                    "fontStyle": "normal",
+                    "fontSize": 76
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "4c5a9238",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e8210d77",
+                  "fields": [
+                    {
+                      "name": "dolar_media",
+                      "expression": "`dolar_media`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": false,
+                "showDescription": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "Visualização 1",
+                  "fields": []
+                },
+                "description": {
+                  "value": "<span style=\"font-family: Arial;font-weight: 700;font-size: 36px;line-height: 1.5;\">Dólar médio atual</span>",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "dolar_media",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "none",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    },
+                    "hideGroupSeparator": true
+                  },
+                  "rowNumber": 1,
+                  "formatTemplate": "R$ {{ @formatted }}",
+                  "style": {
+                    "fontWeight": 700,
+                    "fontStyle": "normal",
+                    "fontSize": 76
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 0,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "d2933945",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f3ac2a59",
+                  "fields": [
+                    {
+                      "name": "mes_referencia",
+                      "expression": "`mes_referencia`"
+                    },
+                    {
+                      "name": "sum(selic_media)",
+                      "expression": "SUM(`selic_media`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "<span style=\"font-size: 30px;font-weight: 700;font-family: Arial;\">Evolução da Taxa Selic</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "layout": "layer"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "mes_referencia",
+                  "axis": {
+                    "title": "Mês de referência"
+                  },
+                  "displayName": "Mês de referência",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(selic_media)",
+                  "axis": {
+                    "title": "Taxa Selic (%)"
+                  },
+                  "displayName": "selic_media",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "1c65ada7",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "5bf5e3d9",
+                  "fields": [
+                    {
+                      "name": "mes_referencia",
+                      "expression": "`mes_referencia`"
+                    },
+                    {
+                      "name": "ipca_mensal",
+                      "expression": "`ipca_mensal`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "<span style=\"font-weight:700;font-size:30px\">Evolução do IPCA</span>\n<p>&nbsp;</p>\n",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "colors": [
+                  "#FF3621"
+                ],
+                "layout": "layer"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "mes_referencia",
+                  "axis": {
+                    "title": "Mês de referência"
+                  },
+                  "displayName": "Mês de referência",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "ipca_mensal",
+                  "axis": {
+                    "title": "IPCA mensal (%)"
+                  },
+                  "displayName": "ipca_mensal",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 6,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "67464217",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "59975eec",
+                  "fields": [
+                    {
+                      "name": "mes_referencia",
+                      "expression": "`mes_referencia`"
+                    },
+                    {
+                      "name": "sum(dolar_media)",
+                      "expression": "SUM(`dolar_media`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "<span style=\"font-size: 30px;font-weight: 700;\">Evolução do Dólar</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "layout": "layer"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "mes_referencia",
+                  "axis": {
+                    "title": "Mês de referência"
+                  },
+                  "displayName": "Mês de referência",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(dolar_media)",
+                  "axis": {
+                    "title": "Dólar médio (R$)"
+                  },
+                  "displayName": "dolar_media",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 9,
+            "width": 6,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
