@@ -1,5 +1,12 @@
 # Monitor Econômico Brasil — Indicadores BCB
 
+![Python](https://img.shields.io/badge/Python-3.x-555555?style=flat-square&logo=python&logoColor=white)
+![PySpark](https://img.shields.io/badge/PySpark-Databricks-555555?style=flat-square&logo=apachespark&logoColor=white)
+![Delta Lake](https://img.shields.io/badge/Delta%20Lake-Medallion-555555?style=flat-square&logo=delta&logoColor=white)
+![Databricks](https://img.shields.io/badge/Databricks-Free%20Edition-555555?style=flat-square&logo=databricks&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-Databricks-555555?style=flat-square&logo=microsoftazure&logoColor=white)
+![Fonte de dados](https://img.shields.io/badge/Fonte-API%20SGS%20%2F%20BCB-555555?style=flat-square)
+
 Pipeline analítico de indicadores macroeconômicos brasileiros (Selic, IPCA e dólar), construído no **Azure Databricks** com **PySpark** e **Delta Lake**, seguindo a arquitetura Medallion (Bronze → Silver → Gold), com um dashboard final no Databricks Lakeview.
 
 ![Dashboard](docs/images/dashboard.png)
@@ -110,5 +117,5 @@ O job roda diariamente às 05:00 (cron `41 0 5 * * ?`, fuso `America/Sao_Paulo`)
 
 ## Autor
 
-Vitor Santos — Engenheiro de Dados
+Vitor Silvestre — Engenheiro de Dados
 [GitHub](https://github.com/vitorsilvestre29)
